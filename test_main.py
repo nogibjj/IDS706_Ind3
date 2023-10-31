@@ -7,7 +7,7 @@ def test_summary_desc():
     result = summary_desc()
 
     # mean
-    assert result.loc["mean", "calories"] == 106.883117	
+    assert result.loc["mean", "calories"] == 106.883117
 
     # median
     assert result.loc["50%", "protein"] == 1.000000
