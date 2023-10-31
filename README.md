@@ -16,13 +16,19 @@ Dataset used: [80 Cereals](https://www.kaggle.com/datasets/crawford/80-cereals)
 
 ## Google Colab
 [View my Google Colab Notebook Here](https://colab.research.google.com/drive/1rhw6fkPY96gxyo0n8ZJOOY1r27pe8cA5#scrollTo=qUtHF3tNzGOX)
+ - Summary Statistics 
 ![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/82571760-6761-4bfc-9f6f-c5a83f3013f6)
-![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/e7150221-f8b2-4fbc-8b8f-f50bb709375f)
+
+ - Visualization 
+![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/1a9e1bf1-d00b-4c4c-a4c8-c2cb8734618d)
 ![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/97764322-84c7-4a86-9552-cee1d0520d9e)
+
+ - Filter data by protein values 
+![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/89ef3aaa-0f1c-4ecd-9153-d74a1b750161)
 
 ## Test Result
 1. Format code by using `make format`
-2. Lint code  by using `make lint`. 
+2. Lint code  by using `make lint`
 3. Test code by using `make test`
    
 ![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/09fcd2f0-6f44-4dbb-87d9-c78136b46795)
