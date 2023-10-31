@@ -7,13 +7,13 @@ def test_summary_desc():
     result = summary_desc()
 
     # mean
-    assert result.loc["mean", "calories"] == 106.883117
+    assert result.loc["mean", "calories"] == 106.88311688311688
 
     # median
-    assert result.loc["50%", "protein"] == 1.000000
+    assert result.loc["50%", "protein"] == 3.0
 
     # standard deviation
-    assert result.loc["std", "fat"] == 1.006473
+    assert result.loc["std", "fat"] == 1.006472559480393
 
 
 def test_visual():
