@@ -26,7 +26,7 @@ def main():
     query(
         spark,
         df,
-        "SELECT * FROM cereal WHERE  name= All-Bran",
+        "SELECT * FROM cereal WHERE  name= 'All-Bran'",
         "cereal",
     )
     # example transform
