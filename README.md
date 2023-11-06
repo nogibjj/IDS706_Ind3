@@ -1,6 +1,6 @@
 [![CI](https://github.com/nogibjj/IDS706_Mini9/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini9/actions/workflows/cicd.yml)
 
-# Mini Project9: Cloud-Hosted Notebook Data Manipulation
+# Mini Project10: PySpark Data Processing
 
 ## Overview
 In this mini project, we will use a cloud-hosted Jupyter Notebook environment, specifically Google Colab, to perform data manipulation on a cereal dataset. Leveraging the power of cloud computing, we can effortlessly handle, transform, and analyze data without the need for local dependencies.
