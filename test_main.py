@@ -40,7 +40,7 @@ def test_describe(spark):
 
 def test_query(spark):
     df = load_data(spark)
-    result = query(spark, df, "SELECT * FROM cereal WHERE  name= All-Bran", "cereal")
+    result = query(spark, df, "SELECT * FROM cereal WHERE  name= 'All-Bran'", "cereal")
     assert result is None
 
 
