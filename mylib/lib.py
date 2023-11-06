@@ -97,9 +97,9 @@ def describe(df):
 def example_transform(df):
     """does an example transformation on a predefiend dataset"""
 
-    specific_name = All-Bran
+    specific_name = "All-Bran"
 
-    df = df.where(df.name == specific_year)
+    df = df.where(df.name == specific_name)
 
     log_output("transform data", df.limit(10).toPandas().to_markdown())
 
