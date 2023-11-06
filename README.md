@@ -1,5 +1,7 @@
 [![CI](https://github.com/nogibjj/IDS706_Mini10/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini10/actions/workflows/cicd.yml)
 
+# Mini Project10: PySpark Data Processing
+
 ## Purpose
 The project entails the utilization of PySpark for handling a sizable dataset. Its primary goals include implementing a Spark SQL query and carrying out a data transformation. I utilized the cereal dataset available on Kaggle for these tasks.
 
