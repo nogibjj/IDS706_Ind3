@@ -1,30 +1,58 @@
-from main import summary_desc, visual, save_to_md
+"""
+Test goes here
 
-# import pandas as pd
-
-
-def test_summary_desc():
-    result = summary_desc()
-
-    # mean
-    assert result.loc["mean", "calories"] == 106.88311688311688
-
-    # median
-    assert result.loc["50%", "protein"] == 3.0
-
-    # standard deviation
-    assert result.loc["std", "fat"] == 1.006472559480393
-
-
-def test_visual():
-    visual()
+"""
+import os
+import pytest
+from mylib.lib import (
+    extract,
+    load_data,
+    describe,
+    query,
+    example_transform,
+    start_spark,
+    end_spark,
+)
 
 
-def test_save_to_md():
-    save_to_md()
+@pytest.fixture(scope="module")
+def spark():
+    spark = start_spark("TestApp")
+    yield spark
+    end_spark(spark)
+
+
+def test_extract():
+    file_path = extract()
+    assert os.path.exists(file_path) is True
+
+
+def test_load_data(spark):
+    df = load_data(spark)
+    assert df is not None
+
+
+def test_describe(spark):
+    df = load_data(spark)
+    result = describe(df)
+    assert result is None
+
+
+def test_query(spark):
+    df = load_data(spark)
+    result = query(spark, df, "SELECT * FROM cereal WHERE  name= All-Bran", "cereal")
+    assert result is None
+
+
+def test_example_transform(spark):
+    df = load_data(spark)
+    result = example_transform(df)
+    assert result is None
 
 
 if __name__ == "__main__":
-    test_summary_desc()
-    test_visual()
-    test_save_to_md()
+    test_extract()
+    test_load_data(spark)
+    test_describe(spark)
+    test_query(spark)
+    test_example_transform(spark)

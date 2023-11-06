@@ -1,24 +1,39 @@
-from lib import pd_desc, pd_visual
-import pandas as pd
+"""
+Main cli or app entry point
+"""
+
+from mylib.lib import (
+    extract,
+    load_data,
+    describe,
+    query,
+    example_transform,
+    start_spark,
+    end_spark,
+)
 
 
-def summary_desc():
-    df = pd.read_csv("cereal.csv")
-    # return [mean(df), median(df), std(df)]
-    return pd_desc(df)
+def main():
+    # extract data
+    extract()
+    # start spark session
+    spark = start_spark("CompetitionRecord")
+    # load data into dataframe
+    df = load_data(spark)
+    # example metrics
+    describe(df)
+    # query
+    query(
+        spark,
+        df,
+        "SELECT * FROM cereal WHERE  name= All-Bran",
+        "cereal",
+    )
+    # example transform
+    example_transform(df)
+    # end spark session
+    end_spark(spark)
 
 
-def visual():
-    df = pd.read_csv("cereal.csv")
-    pd_visual(df["calories"])
-
-
-def save_to_md():
-    df = pd.read_csv("cereal.csv")
-    tab1 = pd_desc(df).to_markdown()
-    pd_visual(df["calories"], render=False)
-    with open("summary.md", "w", encoding="utf-8") as file:
-        file.write("Describe:\n")
-        file.write(tab1)
-        file.write("\n\n")  # Add a new line
-        file.write("![Histgram](histgram.png)\n")
+if __name__ == "__main__":
+    main()
