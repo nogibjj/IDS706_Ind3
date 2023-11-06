@@ -1,34 +1,28 @@
-[![CI](https://github.com/nogibjj/IDS706_Mini9/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini9/actions/workflows/cicd.yml)
+[![CI](https://github.com/nogibjj/IDS706_Mini10/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini10/actions/workflows/cicd.yml)
 
-# Mini Project10: PySpark Data Processing
-
-## Overview
-In this mini project, we will use a cloud-hosted Jupyter Notebook environment, specifically Google Colab, to perform data manipulation on a cereal dataset. Leveraging the power of cloud computing, we can effortlessly handle, transform, and analyze data without the need for local dependencies.
+## Purpose
+The project entails the utilization of PySpark for handling a sizable dataset. Its primary goals include implementing a Spark SQL query and carrying out a data transformation. I utilized the cereal dataset available on Kaggle for these tasks.
 
 Dataset used: [80 Cereals](https://www.kaggle.com/datasets/crawford/80-cereals)
 
+## Requirements
+  * Use PySpark to perform data processing on a large dataset
+  * Include at least one Spark SQL query and one data transformation
+
+## Functionality
+The code does data processing with Spark SQL and transformations:
+  * [E] Extract a dataset from a URL with CSV format.
+  * [T] Transform the data by filtering to get it ready for analysis.
+  * [L] Load the transformed data into a database table using Spark SQL.
+  * [Q] Accept and execute SQL queries on the database to analyze and retrieve insights from the data.
+
 ## Steps
-1. Set up a cloud-hosted Jupyter Notebook environment (Google Colab).
-2. Load the dataset, conduct exploratory data analysis (EDA) including summary statistics and data visualization, and perform data filtering and sorting within the Jupyter Notebook.
-3. Link the Google Colab environment to a GitHub repository.
-4. Create a Makefile to automate the setup and execution processes.
-5. Validate the format and test for any errors.
+1. open codespaces
+2. wait for the environment to be installed
+3. run: `python main.py`
+4. [Pyspark Output Data/Summary Markdown File](pyspark_output.md)
 
-## Google Colab
-[View my Google Colab Notebook Here](https://colab.research.google.com/drive/1rhw6fkPY96gxyo0n8ZJOOY1r27pe8cA5#scrollTo=qUtHF3tNzGOX)
- - Summary Statistics 
-![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/82571760-6761-4bfc-9f6f-c5a83f3013f6)
-
- - Visualization 
-![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/1a9e1bf1-d00b-4c4c-a4c8-c2cb8734618d)
-![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/97764322-84c7-4a86-9552-cee1d0520d9e)
-
- - Filter data by protein values 
-![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/89ef3aaa-0f1c-4ecd-9153-d74a1b750161)
-
-## Test Result
-1. Format code by using `make format`
-2. Lint code  by using `make lint`
-3. Test code by using `make test`
-   
-![image](https://github.com/nogibjj/IDS706_Mini9/assets/141780408/09fcd2f0-6f44-4dbb-87d9-c78136b46795)
+## Check Format and Test errors
+1. Format code: `make format`
+2. Lint code: `make lint`
+3. Test code: `make test`
