@@ -1,30 +1,42 @@
-[![CI](https://github.com/nogibjj/IDS706_Mini10/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Mini10/actions/workflows/cicd.yml)
-
-# Mini Project10: PySpark Data Processing
+# Mini Project11 
 
 ## Purpose
-The project entails the utilization of PySpark for handling a sizable dataset. Its primary goals include implementing a Spark SQL query and carrying out a data transformation. I utilized the cereal dataset available on Kaggle for these tasks.
+The goal of this project is to build an ETL pipeline on Databricks. 
 
-Dataset used: [80 Cereals](https://www.kaggle.com/datasets/crawford/80-cereals)
-
-## Requirements
-  * Use PySpark to perform data processing on a large dataset
-  * Include at least one Spark SQL query and one data transformation
-
-## Functionality
-The code does data processing with Spark SQL and transformations:
-  * [E] Extract a dataset from a URL with CSV format.
-  * [T] Transform the data by filtering to get it ready for analysis.
-  * [L] Load the transformed data into a database table using Spark SQL.
-  * [Q] Accept and execute SQL queries on the database to analyze and retrieve insights from the data.
+## Funciontality
+Extract, transform, and load data on Databricks for the birth dataset. 
 
 ## Steps
-1. open codespaces
-2. wait for the environment to be installed
-3. run: `python main.py`
-4. [Pyspark Output Data/Summary Markdown File](pyspark_output.md)
+**1. Data Extraction:**
+Utilizes the requests library to fetch birth data from specified URLs.
+Downloads and stores the data in the Databricks FileStore.
 
-## Check Format and Test errors
-1. Format code: `make format`
-2. Lint code: `make lint`
-3. Test code: `make test`
+**2. Databricks Environment Setup:**
+Establishes a connection to the Databricks environment using environment variables for authentication (SERVER_HOSTNAME and ACCESS_TOKEN).
+
+**3. Data Transformation and Load:**
+Transform the csv file into a Spark dataframe which is then converted into a Delta Lake Table and stored in the Databricks environement
+
+**4. Query Transformation and Vizulization:**
+Defines a Spark SQL query to perform a predefined transformation on the retrieved data.
+Uses the predifined transformation Spark dataframe to create vizualizations
+
+**5. File Path Checking for make test:**
+Implements a function to check if a specified file path exists in the Databricks FileStore.
+As the majority of the functions only work exclusively in conjunction with Databricks, the Github environment cannot replicate and do not have access to the data in the Databricks workspace. I have opted to test whether I can still connect to the Databricks API.
+Utilizes the Databricks API and the requests library.
+
+**6. Automated trigger via Github Push:**
+I utilize the Databricks API to run a job on my Databricks workspace such that when a user pushes to this repo it will intiate a job run
+
+**Preparation:**
+1. Create a Databricks workspace on Azure
+2. Connect Github account to Databricks Workspace 
+3. Create global init script for cluster start to store enviornment variables 
+4. Create a Databricks cluster that supports Pyspark
+5. Clone repo into Databricks workspace
+6. Create a job on Databricks to build pipeline
+
+## References
+1. https://github.com/nogibjj/python-ruff-template
+1. https://docs.databricks.com/en/getting-started/data-pipeline-get-started.html
