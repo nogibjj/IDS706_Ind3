@@ -1,4 +1,4 @@
-# Mini Project11 
+# Mini Project 11: Data Pipeline with Databricks
 
 ## Purpose
 The goal of this project is to build an ETL pipeline on Databricks. 
