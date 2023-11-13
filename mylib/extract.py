@@ -76,7 +76,7 @@ def extract(
     # Add the csv files, no need to check if it exists or not
     put_file_from_url(url, file_path, overwrite, headers=headers)
 
-    return file_path, file_path2
+    return file_path
 
 
 if __name__ == "__main__":
