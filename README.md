@@ -4,7 +4,7 @@
 The goal of this project is to build an ETL pipeline on Databricks. 
 
 ## Funciontality
-Extract, transform, and load data on Databricks for the birth dataset. 
+Extract, transform, and load data on Databricks for the hate_crimes dataset. 
 
 ## Steps
 **1. Data Extraction:**
