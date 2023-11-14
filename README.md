@@ -8,7 +8,7 @@ Extract, transform, and load data on Databricks for the hate_crimes dataset.
 
 ## Steps
 **1. Data Extraction:**
-Utilizes the requests library to fetch birth data from specified URLs.
+Utilizes the requests library to fetch health crime data from specified URLs.
 Downloads and stores the data in the Databricks FileStore.
 
 **2. Databricks Environment Setup:**
