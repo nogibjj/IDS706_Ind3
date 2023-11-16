@@ -15,24 +15,20 @@ def query_transform():
         DataFrame: Result of the SQL query.
     """
     spark = SparkSession.builder.appName("Query").getOrCreate()
-    query = (
-        "SELECT a.state, "
-            "AVG(a.median_household_income) AS average_median_household_income, "
-            "AVG(a.share_unemployed_seasonal) AS average_share_unemployed_seasonal, "
-            "a.share_population_in_metro_areas, "
-            "b.gini_index "
-            "FROM default.hate_crimes1DB AS a "
-            "JOIN default.hate_crimes2DB AS b ON a.id = b.id "
-            "GROUP BY a.state, a.share_population_in_metro_areas, b.gini_index "
-            "ORDER BY b.gini_index "
-            "LIMIT 5"
-    )
+    query = ("""
+    SELECT major_category AS category, major, SUM(men) AS total_men, SUM(women) AS total_women, AVG(sharewomen) as avg_share_women
+    FROM recentgrads_delta AS a 
+    LEFT JOIN womenstem_delta AS b ON a.major = b.major
+    GROUP BY category, major
+    ORDER BY category, major 
+""")
     query_result = spark.sql(query)
     return query_result
 
 
 # sample viz for project
 def viz():
+    def viz():
     query = query_transform()
     count = query.count()
     if count > 0:
@@ -40,34 +36,29 @@ def viz():
     else:
         print("No data available. Please investigate.")
 
-    plt.figure(figsize=(15, 8))  # Adjusted figure size
-    query.select("share_population_in_metro_areas", "state").toPandas().boxplot(
-        column="share_population_in_metro_areas", by="state"
-    )
-    plt.xlabel("state")
-    plt.ylabel("share_population_in_metro_areas")
-    plt.suptitle("")
-    plt.title("Share population in metro areas by State")
-    # Adjust the rotation and spacing of x-axis labels
-    plt.xticks(rotation=30, ha="right")  # ha='right' aligns the labels to the right
-    plt.tight_layout()  # Ensures proper spacing
-    plt.show("share_population_metro.png")
+    query_result_pd = query.toPandas()
 
-    query.select("average_median_household_income", "state").toPandas()
+    # Plot 1
+    plt.figure(figsize=(15, 8))
+    plt.bar(query_result_pd["category"], query_result_pd["avg_share_women"], color='skyblue')
+    plt.title("Average Share of Women in STEM for Each Category")
+    plt.xlabel("category")
+    plt.ylabel("average share of women")
+    plt.show()
 
-    # Create a bar chart
-    plt.figure(figsize=(10, 6))
-    plt.bar("state", "average_median_household_income", 
-        color="blue"
-    )
-    plt.xlabel("State")
-    plt.ylabel("Average Median Household Income")
-    plt.title("Average Median Household Income by State")
+
+    # Plot 2
+    plt.figure(figsize=(15, 7))
+    query_result_pd.plot(x='major', y=['total_men', 'total_women'], kind='bar')
+    plot_title = ('Total Men vs. Women for Each Major')
+    plt.title(plot_title)
+    plt.ylabel('Counts')
+    plt.xlabel('Major')
     plt.xticks(rotation=45)
-    plt.show("median_income.png")
-
+    plt.legend(title='Metrics')
+    plt.tight_layout()
+    plt.show()    
 
 if __name__ == "__main__":
     query_transform()
     viz()
-    

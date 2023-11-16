@@ -8,7 +8,7 @@ import base64
 load_dotenv()
 server_h = os.getenv("SERVER_HOSTNAME")
 access_token = os.getenv("ACCESS_TOKEN")
-FILESTORE_PATH = "dbfs:/FileStore/mini_project11"
+FILESTORE_PATH = "dbfs:/FileStore/Individual3"
 headers = {'Authorization': 'Bearer %s' % access_token}
 url = "https://"+server_h+"/api/2.0"
 
@@ -65,8 +65,10 @@ def put_file_from_url(url, dbfs_path, overwrite, headers):
 
 
 def extract(
-        url="""https://github.com/fivethirtyeight/data/blob/master/hate-crimes/hate_crimes.csv?raw=true""",
-        file_path=FILESTORE_PATH+"/hate_crimes.csv",
+        url="""https://github.com/fivethirtyeight/data/blob/master/college-majors/women-stem.csv?raw=true""",
+        url2="""https://github.com/fivethirtyeight/data/blob/master/college-majors/recent-grads.csv?raw=true""",
+        file_path=FILESTORE_PATH+"/women_stem.csv",
+        file_path2=FILESTORE_PATH+"/recent_grads.csv",
         directory=FILESTORE_PATH,
         overwrite=True
 ):

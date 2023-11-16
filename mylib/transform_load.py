@@ -1,40 +1,24 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import monotonically_increasing_id
 
-def load(dataset="dbfs:/FileStore/mini_project11/hate_crimes.csv"):
+def load(dataset="dbfs:/FileStore/individual3/women_stem.csv", 
+         dataset2="dbfs:/FileStore/individual3/recent_grads.csv"):
     spark = SparkSession.builder.appName("Read CSV").getOrCreate()
     # load csv and transform it by inferring schema 
-    hate_crimes_df = spark.read.csv(dataset, header=True, inferSchema=True)
-
-    columns = hate_crimes_df.columns
-
-    # Split columns into two halves
-    columns1 = columns[:6]
-    columns2 = columns[1,6,7,8,9,10]
-
-    # Create two new DataFrames
-    hate_crimes_df1 = hate_crimes_df.select(*columns1)
-    hate_crimes_df2 = hate_crimes_df.select(*columns2)
+    women_stem_df = spark.read.csv(dataset, header=True, inferSchema=True)
+    recent_grads_df = spark.read.csv(dataset2, header=True, inferSchema=True)
 
     # add unique IDs to the DataFrames
-    hate_crimes_df1 = hate_crimes_df1.withColumn(
-        "id", monotonically_increasing_id()
-    )
-    hate_crimes_df2 = hate_crimes_df2.withColumn(
-        "id", monotonically_increasing_id()
-    )
+    women_stem_df = women_stem_df.withColumn("id", monotonically_increasing_id())
+    recent_grads_df = recent_grads_df.withColumn("id", monotonically_increasing_id())
 
-    # transform into a delta lakes table and store it
-    hate_crimes_df1.write.format("delta").mode("overwrite").saveAsTable(
-        "hate_crimes_df1_delta"
-    )
-    hate_crimes_df2.write.format("delta").mode("overwrite").saveAsTable(
-        "hate_crimes_df2_delta"
-    )
+    # transform into a delta lakes table and store it 
+    recent_grads_df.write.format("delta").mode("overwrite").saveAsTable("recentgrads_delta")
+    women_stem_df.write.format("delta").mode("overwrite").saveAsTable("womenstem_delta")
     
-    num_rows = hate_crimes_df1.count()
+    num_rows = recent_grads_df.count()
     print(num_rows)
-    num_rows = hate_crimes_df2.count()
+    num_rows = women_stem_df.count()
     print(num_rows)
     
     return "finished transform and load"
