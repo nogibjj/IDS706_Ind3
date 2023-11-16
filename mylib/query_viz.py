@@ -15,28 +15,28 @@ def query_transform():
         DataFrame: Result of the SQL query.
     """
     spark = SparkSession.builder.appName("Query").getOrCreate()
-    query = ("""
-    SELECT major_category AS category, major, SUM(men) AS total_men, SUM(women) AS total_women, AVG(sharewomen) as avg_share_women
+    query = """
+    SELECT major_category AS category, major, SUM(men) AS total_men, 
+           SUM(women) AS total_women, AVG(sharewomen) as avg_share_women
     FROM recentgrads_delta AS a 
     LEFT JOIN womenstem_delta AS b ON a.major = b.major
     GROUP BY category, major
     ORDER BY category, major 
-""")
+    """
     query_result = spark.sql(query)
     return query_result
 
 
 # sample viz for project
 def viz():
-    def viz():
-    query = query_transform()
-    count = query.count()
+    query_result = query_transform()
+    count = query_result.count()
     if count > 0:
         print(f"Data validation passed. {count} rows available.")
     else:
         print("No data available. Please investigate.")
 
-    query_result_pd = query.toPandas()
+    query_result_pd = query_result.toPandas()
 
     # Plot 1
     plt.figure(figsize=(15, 8))
@@ -46,18 +46,17 @@ def viz():
     plt.ylabel("average share of women")
     plt.show()
 
-
     # Plot 2
     plt.figure(figsize=(15, 7))
     query_result_pd.plot(x='major', y=['total_men', 'total_women'], kind='bar')
-    plot_title = ('Total Men vs. Women for Each Major')
-    plt.title(plot_title)
+    plt.title('Total Men vs. Women for Each Major')
     plt.ylabel('Counts')
     plt.xlabel('Major')
     plt.xticks(rotation=45)
     plt.legend(title='Metrics')
     plt.tight_layout()
     plt.show()    
+
 
 if __name__ == "__main__":
     query_transform()
