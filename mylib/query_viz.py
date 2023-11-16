@@ -40,7 +40,10 @@ def viz():
 
     # Plot 1
     plt.figure(figsize=(15, 8))
-    plt.bar(query_result_pd["category"], query_result_pd["avg_share_women"], color='skyblue')
+    plt.bar(
+        query_result_pd["category"], 
+        query_result_pd["avg_share_women"], 
+        color='skyblue')
     plt.title("Average Share of Women in STEM for Each Category")
     plt.xlabel("category")
     plt.ylabel("average share of women")
@@ -48,7 +51,11 @@ def viz():
 
     # Plot 2
     plt.figure(figsize=(15, 7))
-    query_result_pd.plot(x='major', y=['total_men', 'total_women'], kind='bar')
+    query_result_pd.plot(
+        x='major',
+        y=['total_men', 'total_women'],
+        kind='bar'
+    )
     plt.title('Total Men vs. Women for Each Major')
     plt.ylabel('Counts')
     plt.xlabel('Major')
