@@ -28,7 +28,7 @@ Defines a Spark SQL query to perform a predefined transformation on the retrieve
 - **File Path Checking for make test:**
 Implements a function to check if a specified file path exists in the Databricks FileStore. As the majority of the functions only work exclusively in conjunction with Databricks, the Github environment cannot replicate and do not have access to the data in the Databricks workspace. I have opted to test whether I can still connect to the Databricks API. Utilizes the Databricks API and the requests library.
 
-- **. Automated trigger via Github Push:** 
+- **Automated trigger via Github Push:** 
 I utilize the Databricks API to run a job on my Databricks workspace such that when a user pushes to this repo it will intiate a job run
 
 ## Databricks Environment Setup 
