@@ -1,4 +1,6 @@
-# Individual Project3: Data Pipeline with Databricks
+[![CI](https://github.com/nogibjj/IDS706_Individual3/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Individual3/actions/workflows/cicd.yml)
+
+# Individual Project 3: Data Pipeline with Databricks
 
 ## Overview 
 The Data Extraction and Transformation Pipeline project is designed to extract and process tennis match data from the fivethirtyeight datasets. It leverages Databricks in combination with the Databricks API and various Python libraries to achieve this goal. Additionally, this project involves the development of a comprehensive Databricks ETL (Extract, Transform, Load) Pipeline for retrieving and processing airline safety datasets.
@@ -40,8 +42,13 @@ I utilize the Databricks API to run a job on my Databricks workspace such that w
 6. Create a job on Databricks to build pipeline
 
 ## Delta Source, Delta Sink (Delta Lake), and ETL Pipeline 
+![image](https://github.com/nogibjj/IDS706_Individual3/assets/141780408/433bd43e-2a55-4c2d-b596-d49844f3b55e)
 
 ## Visualization of Query Result
+![image](https://github.com/nogibjj/IDS706_Individual3/assets/141780408/c07d6ef0-0beb-4bb0-abe5-0c1aefc7d58c)
+![image](https://github.com/nogibjj/IDS706_Individual3/assets/141780408/4c0e61c5-d74d-4c54-9b02-23d364c5f31e)
+
+
 
 ## References
 1. https://github.com/nogibjj/python-ruff-template
