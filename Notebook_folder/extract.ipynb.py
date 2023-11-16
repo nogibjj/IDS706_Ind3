@@ -1,3 +1,8 @@
+# Databricks notebook source
+!pip install -r ../requirements.txt
+
+# COMMAND ----------
+
 import requests
 from dotenv import load_dotenv
 import os
@@ -84,3 +89,4 @@ def extract(
 
 if __name__ == "__main__":
     extract()
+
