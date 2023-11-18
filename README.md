@@ -57,7 +57,7 @@ I utilize the Databricks API to run a job on my Databricks workspace such that w
 ![image](https://github.com/nogibjj/IDS706_Individual3/assets/141780408/4c0e61c5-d74d-4c54-9b02-23d364c5f31e)
 
 ## Video Demo
-[Video](https://youtu.be/b9F1kAM_DWA)
+[Video]([https://youtu.be/b9F1kAM_DWA](https://youtu.be/1L_0OzYDYss)
 
 ## References
 1. https://github.com/nogibjj/python-ruff-template
