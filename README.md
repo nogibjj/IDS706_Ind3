@@ -1,6 +1,6 @@
 [![CI](https://github.com/nogibjj/IDS706_Individual3/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS706_Individual3/actions/workflows/cicd.yml)
 
-## Individual Project 3: Data ETL (Extract, Transform, Load) Pipeline with Databricks
+## Individual Project 3: ETL (Extract, Transform, Load) Pipeline with Databricks
 
 ## Overview 
 
